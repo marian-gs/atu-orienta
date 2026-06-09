@@ -1,59 +1,67 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# ATU Orienta
+Proyecto desarrollado como práctica de desarrollo web con Laravel, PHP y MySQL, con una interfaz preparada para integrar funcionalidades de orientación inteligente.
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Descripción
+ATU Orienta es una aplicación web desarrollada con Laravel para mostrar un catálogo de cursos de Grupo ATU y ofrecer al usuario información detallada sobre cada curso.
+La aplicación permite consultar los cursos disponibles, acceder a la ficha de cada curso y ver datos como la provincia, ciudad, nivel, modalidad, área, colectivos admitidos y requisitos.
+Además, cada curso cuenta con una sección de orientación integrada en la misma página, donde se muestra un asistente visual con preguntas rápidas relacionadas con el curso.
 
-## About Laravel
+## Tecnologías utilizadas
+* PHP
+* Laravel
+* Blade
+* MySQL
+* Bootstrap
+* JavaScript
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Funcionalidades principales
+* Listado de cursos.
+* Vista detallada de cada curso.
+* Información del curso:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+  * Provincia
+  * Ciudad
+  * Nivel
+  * Colectivos admitidos
+  * Requisitos
+  * Modalidad
+  * Área
+* Botón para solicitar información externa.
+* Botón para volver al catálogo.
+* Asistente de orientación integrado dentro de la misma vista del curso.
+* Chat visual con preguntas rápidas.
+* Formulario general de orientación para recomendar cursos.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Estructura básica del proyecto
 
-## Learning Laravel
+app/
+ └── Http/
+     └── Controllers/
+         ├── CursoController.php
+         ├── RecomendadorController.php
+         └── ChatCursoController.php
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+resources/
+ └── views/
+     ├── layouts/
+     │   └── app.blade.php
+     ├── cursos/
+     │   ├── index.blade.php
+     │   ├── show.blade.php
+     │   └── asistente-inline.blade.php
+     └── orientacion/
+         └── formulario.blade.php
+routes/
+ └── web.php
+```
 
-## Laravel Sponsors
+## Notas importantes
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+La integración real con OpenAI no está activa porque requiere una clave de API de pago.
+Funcionamiento de las respuestas del asistente
+En un principio, el proyecto estaba preparado para poder conectar el asistente con la API de OpenAI y generar respuestas inteligentes sobre cada curso.
+Sin embargo, al tratarse de una API de pago, no se dejó activa la conexión real con OpenAI. En su lugar, las respuestas del asistente se realizaron de forma simulada mediante código propio en el proyecto. Para ello, se utiliza el controlador `ChatCursoController`, que recibe la pregunta enviada desde el chat y devuelve una respuesta basada en los datos del curso seleccionado, como requisitos, modalidad, ciudad, provincia, nivel o colectivos admitidos.
+De esta forma, el usuario puede interactuar con el asistente desde la misma página del curso, usando preguntas rápidas o escribiendo una consulta, sin depender de una API externa de pago.
 
-### Premium Partners
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
